@@ -1,0 +1,29 @@
+<div class="container">
+  <h2 class="col-sm-8 col-sm-offset-2 mx-auto border-bottom pb-3 pt-4"><%= @restaurant.name%>
+  <small>
+    <%=link_to edit_restaurant_path(@restaurant.id) do%>
+      <i class="fa fa-pencil"></i>
+    <%end%>
+    <%=link_to restaurant_path(@restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+      <i class="fa-solid fa-trash"></i>
+    <%end%>
+  </small>
+  </h2>
+  <p class="row col-sm-8 col-sm-offset-2 mx-auto pt-3"><%= @restaurant.adress%></p>
+  <p class="row col-sm-8 col-sm-offset-2 mx-auto pt-3"><%= @restaurant.phone_number%></p>
+  <p class="row col-sm-8 col-sm-offset-2 mx-auto pt-3"><%= @restaurant.category%></p>
+  <%= link_to 'Add a Review', new_restaurant_review_path(@restaurant)%>
+  <%=link_to "Back to list", restaurants_path%>
+</div>
+
+<p><strong>Reviews</strong></p>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">
+      <b><%= review.rating %></b>
+      <br>
+      <%= review.content %>
+  </li>
+  <% end %>
+</ul>
+<br>

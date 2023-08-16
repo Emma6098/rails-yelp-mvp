@@ -1,0 +1,8 @@
+<%= simple_form_for(restaurant) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :adress %>
+  <%= f.input :phone_number %>
+  <%= f.label :category %>
+  <%= f.select :category, collection: Restaurant::CATEGORIES %>
+  <%= f.submit %>
+<% end %>
